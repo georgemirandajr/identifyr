@@ -1,0 +1,18 @@
+{
+    "contents" : "# Purpose \nThis package provides an efficient method for cleaning unique identifiers used by the Los Angeles County Probation Department. It contains functions that standardize identifiers and a wrapper function that applies multiple identifyr functions at once.\n    \n# How to Use It\nUsers can apply the individual functions to an identifier of interest, or use the wrapper \"clean_id\" to indicate the column numbers and corresponding functions to apply. The column numbers and the order of the functions must be in the same order.  The result of the wrapper function is a dataframe of the original length, but with replaced values in the indicated columns. The package utilizes the magrittr pipe operator to make the code easy to read. \n\n```{r}\ndf %>%\n  clean_id(\n    cols = c(1, 3),  # tell the function which columns have the identifiers\n    FUN = c(\"clean_x\", \"clean_pb\")  # apply these functions in this order\n  )\n  \n# Or you can apply one function at a time\nclean_x(x)\nclean_pb(x) \n\n```\n  \n# Where to Find It\nThe package can be downloaded from github if you have the devtools package for R.\n\n```{r}\ninstall.packages(\"devtools\")  # If you don't already have devtools\n\ndevtools::install_github(\"georgemirandajr/identifyr\")\n\n```\n",
+    "created" : 1450999914210.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1231559248",
+    "id" : "5BB3871A",
+    "lastKnownWriteTime" : 1451000187,
+    "path" : "~/identifyr/README.md",
+    "project_path" : "README.md",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "type" : "markdown"
+}

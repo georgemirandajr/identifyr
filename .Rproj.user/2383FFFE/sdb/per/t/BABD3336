@@ -1,0 +1,18 @@
+{
+    "contents" : "library(testthat)\nlibrary(identifyr)\ncontext(\"Match Output\")\n\n# test_check(\"identifyr\")\n\ntest_that(\"string is padding correctly when X is present\", {\n  expect_output(clean_x(\"X6789\"), \"X00006789\")\n  expect_output(clean_x(\"X\"), \"X00000000\")\n  expect_output(clean_x(\"0\"), \"X00000000\")\n  expect_output(clean_x(\"789\"), \"X00000789\")\n  expect_output(clean_x(\"NOT IN APS\"), NA)\n  expect_output(clean_x(\"NO X#\"), NA)\n  expect_output(clean_x(\"X 0123456\"), \"X00123456\")\n  expect_output(clean_x(\" X01234\"), \"X00001234\")\n  expect_output(clean_x(\"X01234 \"), \"X00001234\")\n  expect_output(clean_x(\" X 01234 \"), \"X00001234\")\n  expect_output(clean_x(\" X 012 34\"), \"X00001234\")\n})\n",
+    "created" : 1450819150273.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1520096261",
+    "id" : "BABD3336",
+    "lastKnownWriteTime" : 1450805674,
+    "path" : "~/identifyr/tests/testthat/test_xnum.R",
+    "project_path" : "tests/testthat/test_xnum.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

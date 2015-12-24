@@ -1,0 +1,17 @@
+{
+    "contents" : "Package: identifyr\nType: Package\nTitle: Clean X-Numbers\nVersion: 0.1\nDate: 2015-12-21\nAuthor: George Miranda\nMaintainer: George Miranda <georgemirandajr@gmail.com>\nDescription: This package provides methods for standardizing identifiers commonly used by Probation Department.\nLicense: GPL\nLazyData: TRUE\nImports:\n    stringr (>= 1.0.0),\n    magrittr (>= 1.5)\nRoxygenNote: 5.0.1\nSuggests: testthat\nURL: https://github.com/georgemirandajr/identifyr\nBugReports: https://github.com/georgemirandajr/identifyr/issues\n",
+    "created" : 1450992096525.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1926716218",
+    "id" : "6BEFC64D",
+    "lastKnownWriteTime" : 1450996351,
+    "path" : "~/identifyr/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "type" : "dcf"
+}
