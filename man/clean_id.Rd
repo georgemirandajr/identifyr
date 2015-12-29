@@ -9,7 +9,7 @@ clean_id(data, cols = list(), FUN = list())
 \arguments{
 \item{data}{is a data.frame containing any number of columns.}
 
-\item{cols}{is a list of integers indicating the column numbers that are to be cleaned up.}
+\item{cols}{is a list of integers or column names indicating the columns that are to be cleaned up.}
 
 \item{FUN}{is a list of functions to pass to the specified columns (must be in same order as the column index)}
 }

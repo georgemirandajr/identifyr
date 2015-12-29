@@ -3,3 +3,4 @@
 ^NEWS\.md$
 ^cran-comments\.md$
 ^identifyr-manual\.pdf$
+^data-raw$

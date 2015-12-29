@@ -1,0 +1,18 @@
+{
+    "contents" : "# Identifyr 0.1.1\n\n## Release 0.1.1 contains a new function, `obtain_id`, to obtain identifiers when a user supplies one known identifier. An enhancement was made to `clean_x` that allows user to specify whether or not the X number should be cross-referenced with a built-in table. The built-in reference table only contains X-Numbers, Case Numbers (PB) and CII numbers at the time of this release. \n\n",
+    "created" : 1451416905644.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "743276063",
+    "id" : "C25B16CB",
+    "lastKnownWriteTime" : 1451417070,
+    "path" : "~/identifyr/NEWS.md",
+    "project_path" : "NEWS.md",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "type" : "markdown"
+}

@@ -2,7 +2,7 @@
 #' @title Clean ID
 #' @description Provides a method for applying both cleaning functions (clean_x and clean_pb) to a dataframe by index.
 #' @param data is a data.frame containing any number of columns.
-#' @param cols is a list of integers indicating the column numbers that are to be cleaned up.
+#' @param cols is a list of integers or column names indicating the columns that are to be cleaned up.
 #' @param FUN is a list of functions to pass to the specified columns (must be in same order as the column index)
 #' @details This function is meant to be used on multiple columns at once. It makes use of the magrittr pipe operator to provide neat code.
 #' @return Returns a dataframe with replacements in the specified columns
