@@ -7,7 +7,7 @@ Author: George Miranda [aut, cre]
 Maintainer: George Miranda <georgemirandajr@gmail.com>
 Description: A fast way to clean unique identifiers used by the Los Angeles County Probation Department.
 License: GPL
-LazyData: TRUE
+LazyData: FALSE
 Depends: R (>= 2.10)
 Imports:
     stringr (>= 1.0.0),

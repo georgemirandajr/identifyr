@@ -1,0 +1,17 @@
+{
+    "contents" : "\n#' @title Obtain ID Numbers\n#' @description Obtains an unknown identifier given some known identifier.\n#' @param obtain character. The desired identifier. Could be either \"X\" or \"CII\".\n#' @param using character. Name of the known identifier. Could be \"X\", \"CASE\", or \"CII\".\n#' @param value character vector. The actual value(s) of the known identifier.\n#' @return List of length 1 containing the desired unique identifier\n#' @seealso clean_pb, clean_x, clean_id\n#' @examples\n#' obtain_id(obtain = \"X\", using = \"CASE\", \"PB021665\")\n# load(\"./R/sysdata.rda\", envir = environment())\n# Obtain ID\n#' @export obtain_id\nobtain_id <- function(obtain = list(), using = list(), value = \"\") {\n  # Use the reference data in the global environment\n  position <- match(value, ref[,using])  # find the row position of the value within the reference table\n  data <- ref[position,obtain]  # subset the reference table by the row position and return the column indicated by obtain\n  return(data)\n}\n",
+    "created" : 1451432252382.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1010188275",
+    "id" : "53FD05CD",
+    "lastKnownWriteTime" : 1451433234,
+    "path" : "~/identifyr/R/obtain_id.R",
+    "project_path" : "R/obtain_id.R",
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
