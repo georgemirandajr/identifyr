@@ -8,9 +8,9 @@
 #' @seealso clean_pb, clean_x, clean_id
 #' @examples
 #' obtain_id(obtain = "X", using = "CASE", "PB021665")
-# load("./R/sysdata.rda", envir = environment())
+
 # Obtain ID
-#' @export obtain_id
+#' @export
 obtain_id <- function(obtain = list(), using = list(), value = "") {
   # Use the reference data in the global environment
   position <- match(value, ref[,using])  # find the row position of the value within the reference table
