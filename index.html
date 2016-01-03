@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Identifyr by georgemirandajr</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Identifyr</h1>
+        <p>identifyr</p>
+
+        <p class="view"><a href="https://github.com/georgemirandajr/identifyr">View the Project on GitHub <small>georgemirandajr/identifyr</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/georgemirandajr/identifyr/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/georgemirandajr/identifyr/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/georgemirandajr/identifyr">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="purpose" class="anchor" href="#purpose" aria-hidden="true"><span class="octicon octicon-link"></span></a>Purpose</h1>
+
+<p>This package provides efficient tools for cleaning unique identifiers used by the Los Angeles County Probation Department. It contains functions that standardize identifiers in preparation for analysis. There is also a wrapper function that applies multiple identifyr functions at once (similar to <code>dplyr::mutate</code>, but does not require explicit column names). </p>
+
+<h1>
+<a id="how-to-use-it" class="anchor" href="#how-to-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Use It</h1>
+
+<p>Users can apply the individual functions to an identifier of interest, or use the wrapper <code>clean_id()</code> to indicate the column numbers or names and corresponding functions to apply. The user-supplied columns and the order of the functions must be in the same order.  The result of the wrapper function is a dataframe of the original length with replaced values in the indicated columns. Identifyr utilizes the magrittr pipe operator because it is designed to be used in conjunction with other data cleaning/wrangling packages such as <code>dplyr</code> and <code>tidyr</code>. </p>
+
+<h3>
+<a id="cleaning-functions" class="anchor" href="#cleaning-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cleaning Functions</h3>
+
+<p>You can apply one function at a time.</p>
+
+<div class="highlight highlight-source-r"><pre>clean_x(<span class="pl-smi">x</span>)
+clean_pb(<span class="pl-smi">x</span>) </pre></div>
+
+<p>You can pass additional arguments to clean_x that verifies the identifier against a reference table.</p>
+
+<div class="highlight highlight-source-r"><pre><span class="pl-c"># Example (Do not run):</span>
+clean_x(<span class="pl-smi">x</span>, <span class="pl-v">using</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>CASE<span class="pl-pds">"</span></span>, <span class="pl-v">value</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>PB000123<span class="pl-pds">"</span></span>)
+</pre></div>
+
+<h3>
+<a id="obtain_id" class="anchor" href="#obtain_id" aria-hidden="true"><span class="octicon octicon-link"></span></a>Obtain_id</h3>
+
+<p>You can obtain an identifier if you have another identifier that could be cross-referenced in the built-in table. Currently, you can obtain either X or CII numbers.</p>
+
+<div class="highlight highlight-source-r"><pre>obtain_id(<span class="pl-v">obtain</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>X<span class="pl-pds">"</span></span>, 
+  <span class="pl-v">using</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>CASE<span class="pl-pds">"</span></span>, 
+  <span class="pl-v">value</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>PB000123<span class="pl-pds">"</span></span>)</pre></div>
+
+<h3>
+<a id="clean_id" class="anchor" href="#clean_id" aria-hidden="true"><span class="octicon octicon-link"></span></a>Clean_id</h3>
+
+<p>Apply the cleaning functions at once (similar to <code>dplyr::mutate</code>)</p>
+
+<div class="highlight highlight-source-r"><pre><span class="pl-smi">df</span> %<span class="pl-k">&gt;</span>%
+  clean_id(
+    <span class="pl-v">cols</span> <span class="pl-k">=</span> c(<span class="pl-c1">1</span>, <span class="pl-c1">3</span>),  <span class="pl-c"># reference the desired column index or name to manipulate</span>
+    <span class="pl-v">FUN</span> <span class="pl-k">=</span> c(<span class="pl-s"><span class="pl-pds">"</span>clean_x<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>clean_pb<span class="pl-pds">"</span></span>)  <span class="pl-c"># apply these functions in this order</span>
+  )
+</pre></div>
+
+<h1>
+<a id="where-to-find-it" class="anchor" href="#where-to-find-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>Where to Find It</h1>
+
+<p>The latest version of <code>identifyr</code> is available for download from github if you have the devtools package for R. The initial release is available on the Comprehensive R Archive Network (CRAN) and all future major releases will be available on CRAN.</p>
+
+<h3>
+<a id="from-github" class="anchor" href="#from-github" aria-hidden="true"><span class="octicon octicon-link"></span></a>From Github</h3>
+
+<div class="highlight highlight-source-r"><pre>install.packages(<span class="pl-s"><span class="pl-pds">"</span>devtools<span class="pl-pds">"</span></span>)
+
+<span class="pl-e">devtools</span><span class="pl-k">::</span>install_github(<span class="pl-s"><span class="pl-pds">"</span>georgemirandajr/identifyr<span class="pl-pds">"</span></span>)
+</pre></div>
+
+<h3>
+<a id="from-comprehensive-r-archive-network-cran" class="anchor" href="#from-comprehensive-r-archive-network-cran" aria-hidden="true"><span class="octicon octicon-link"></span></a>From Comprehensive R Archive Network (CRAN)</h3>
+
+<div class="highlight highlight-source-r"><pre>install.packages(<span class="pl-s"><span class="pl-pds">"</span>identifyr<span class="pl-pds">"</span></span>)</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/georgemirandajr">georgemirandajr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
