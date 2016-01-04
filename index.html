@@ -1,33 +1,42 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html>
+<html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Identifyr by georgemirandajr</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Identifyr</h1>
-      <h2 class="project-tagline">identifyr</h2>
-      <a href="https://github.com/georgemirandajr/identifyr" class="btn">View on GitHub</a>
-      <a href="https://github.com/georgemirandajr/identifyr/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/georgemirandajr/identifyr/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+    <div class="wrapper">
+      <header>
+        <h1>Identifyr</h1>
+        <p>Clean-up Unique Identifiers</p>
 
-    <section class="main-content">
-      <h1>
+        <p class="view"><a href="https://github.com/georgemirandajr/identifyr">View the Project on GitHub <small>georgemirandajr/identifyr</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/georgemirandajr/identifyr/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/georgemirandajr/identifyr/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/georgemirandajr/identifyr">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
 <a id="purpose" class="anchor" href="#purpose" aria-hidden="true"><span class="octicon octicon-link"></span></a>Purpose</h1>
 
-<p>This package provides efficient tools for cleaning unique identifiers used by the Los Angeles County Probation Department. It contains functions that standardize identifiers in preparation for analysis. There is also a wrapper function that applies multiple <code>identifyr</code> functions at once (similar to <code>dplyr::mutate</code>, but does not require explicit column names). </p>
+<p>This package provides efficient tools for cleaning unique identifiers used by the Los Angeles County Probation Department. It contains functions that standardize and verify identifiers in preparation for analysis. There is also a wrapper function that applies multiple <code>identifyr</code> functions at once (similar to <code>dplyr::mutate</code>, but does not require explicit column names). </p>
 
 <h1>
 <a id="how-to-use-it" class="anchor" href="#how-to-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Use It</h1>
 
-<p>Users can apply the individual functions to an identifier of interest, or use the wrapper <code>clean_id()</code> to indicate the column numbers or names and corresponding functions to apply. The user-supplied columns and the order of the functions must be in the same order.  The result of the wrapper function is a dataframe of the original length with replaced values in the indicated columns. Identifyr utilizes the magrittr pipe operator because it is designed to be used in conjunction with other data cleaning/wrangling packages such as <code>dplyr</code> and <code>tidyr</code>. </p>
+<p>Users can apply the individual functions to an identifier of interest, or use the wrapper <code>clean_id()</code> to indicate the column numbers or names and corresponding functions to apply. The user-supplied columns and the functions must be in the same order.  The result of the wrapper function is a dataframe of the original length with replaced values in the indicated columns. Identifyr utilizes the magrittr pipe operator because it is designed to be used in conjunction with other data cleaning/wrangling packages such as <code>dplyr</code> and <code>tidyr</code>. </p>
 
 <h3>
 <a id="cleaning-functions" class="anchor" href="#cleaning-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cleaning Functions</h3>
@@ -37,7 +46,7 @@
 <div class="highlight highlight-source-r"><pre>clean_x(<span class="pl-smi">x</span>)
 clean_pb(<span class="pl-smi">x</span>) </pre></div>
 
-<p>You can pass additional arguments to clean_x that verifies the identifier against a reference table.</p>
+<p>You can pass additional arguments to clean_x that verifies the identifier against a reference table. </p>
 
 <div class="highlight highlight-source-r"><pre><span class="pl-c"># Example (Do not run):</span>
 clean_x(<span class="pl-smi">x</span>, <span class="pl-v">using</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>CASE<span class="pl-pds">"</span></span>, <span class="pl-v">value</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>PB000123<span class="pl-pds">"</span></span>)
@@ -46,7 +55,7 @@ clean_x(<span class="pl-smi">x</span>, <span class="pl-v">using</span> <span cla
 <h3>
 <a id="obtain_id" class="anchor" href="#obtain_id" aria-hidden="true"><span class="octicon octicon-link"></span></a>Obtain_id</h3>
 
-<p>You can obtain an identifier if you have another identifier that could be cross-referenced in the built-in table. Currently, you can obtain either X or CII numbers.</p>
+<p>You can obtain an identifier if you have another identifier that could be cross-referenced with the built-in table. Currently, you can obtain either X or CII numbers.</p>
 
 <div class="highlight highlight-source-r"><pre>obtain_id(<span class="pl-v">obtain</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>X<span class="pl-pds">"</span></span>, 
   <span class="pl-v">using</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>CASE<span class="pl-pds">"</span></span>, 
@@ -67,7 +76,7 @@ clean_x(<span class="pl-smi">x</span>, <span class="pl-v">using</span> <span cla
 <h1>
 <a id="where-to-find-it" class="anchor" href="#where-to-find-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>Where to Find It</h1>
 
-<p>The latest version of <code>identifyr</code> is available for download from github if you have the devtools package for R. The initial release is available on the Comprehensive R Archive Network (CRAN) and all future major releases will be available on CRAN.</p>
+<p>The latest version of <code>identifyr</code> is available for download from Github if you have the <code>devtools</code> package for R. The initial release is available on the Comprehensive R Archive Network (CRAN) and all future major releases will be available on CRAN. I will attempt to make monthly (+/- a few days) updates to the built-in dataset used to verify identifiers. These updates will always be available on Github and will be on CRAN when it coincides with a major release.</p>
 
 <h3>
 <a id="from-github" class="anchor" href="#from-github" aria-hidden="true"><span class="octicon octicon-link"></span></a>From Github</h3>
@@ -81,15 +90,13 @@ clean_x(<span class="pl-smi">x</span>, <span class="pl-v">using</span> <span cla
 <a id="from-comprehensive-r-archive-network-cran" class="anchor" href="#from-comprehensive-r-archive-network-cran" aria-hidden="true"><span class="octicon octicon-link"></span></a>From Comprehensive R Archive Network (CRAN)</h3>
 
 <div class="highlight highlight-source-r"><pre>install.packages(<span class="pl-s"><span class="pl-pds">"</span>identifyr<span class="pl-pds">"</span></span>)</pre></div>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/georgemirandajr/identifyr">Identifyr</a> is maintained by <a href="https://github.com/georgemirandajr">georgemirandajr</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/georgemirandajr">georgemirandajr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
-
-    </section>
-
-  
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
   </body>
 </html>
