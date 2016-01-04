@@ -1,20 +1,20 @@
 
 #' @title Clean ID
-#' @description Provides a method for applying both cleaning functions (clean_x and clean_pb) to a dataframe by index.
+#' @description Provides a method for applying both cleaning functions (clean_x and clean_case) to a dataframe by index.
 #' @param data is a data.frame containing any number of columns.
 #' @param cols is a list of integers or column names indicating the columns that are to be cleaned up.
 #' @param FUN is a list of functions to pass to the specified columns (must be in same order as the column index)
 #' @details This function is meant to be used on multiple columns at once. It makes use of the magrittr pipe operator to provide neat code.
 #' @return Returns a dataframe with replacements in the specified columns
-#' @seealso clean_x, clean_pb
+#' @seealso clean_x, clean_case
 #' @examples
 #' df <- data.frame(pbnum = c("PB123", "PB 0034", "  5678 ", "None"),
 #' status = c("Active", "Closed", "Closed", "Active"),
 #' xnum = c("X00123", "9512", "X789", "NOT IN APS"))
 #'
-#' #' df %>% clean_id(cols = c(1,3), FUN = c("clean_pb", "clean_x"))
+#' #' df %>% clean_id(cols = c(1,3), FUN = c("clean_case", "clean_x"))
 #'
-#' #' clean_id(data = df, cols = c(1,3), FUN = c("clean_pb", "clean_x"))
+#' #' clean_id(data = df, cols = c(1,3), FUN = c("clean_case", "clean_x"))
 
 # Take a dataframe (df) and apply both cleaning functions and return the clean dataframe
 #' @import magrittr

@@ -5,7 +5,7 @@
 #' @param using character. Name of the known identifier. Could be "X", "CASE", or "CII".
 #' @param value character vector. The actual value(s) of the known identifier.
 #' @return List of length 1 containing the desired unique identifier
-#' @seealso clean_pb, clean_x, clean_id
+#' @seealso clean_case, clean_x, clean_id
 #' @examples
 #' obtain_id(obtain = "X", using = "CASE", "PB021665")
 

@@ -1,18 +1,18 @@
 
-#' @title Clean PB Numbers
-#' @description Useful for correcting manually entered PB numbers that may be abbreviated or contain non-standard methods for handling null values such as "No #"
-#' @param x is a character vector containing PB numbers
-#' @return Character vector of standardized PB numbers. NA values are introduced where there appears to be non-X characters present.
+#' @title Clean Case Numbers
+#' @description Useful for correcting manually entered case numbers that may be abbreviated or contain non-standard methods for handling null values such as "No #"
+#' @param x is a character vector containing case numbers.
+#' @return Character vector of standardized case numbers.
 #' @seealso clean_x, clean_id
 #' @examples
-#' clean_pb("PB123") # PB000123
-#' clean_x("None") # NA
-#' clean_x("5678") # PB005678
+#' clean_case("PB123") # PB000123
+#' clean_case("None") # NA
+#' clean_case("5678") # PB005678
 
-# Clean PB Numbers
-# These should be 8 characters and contain PB as the first two characters
+# Clean Case Numbers
+# These should be 8 characters and usually contain PB or some other letter(s) as the first two characters
 #' @export
-clean_pb <- function(x) {
+clean_case <- function(x) {
 
   # Strip away all characters, even if it's something that indicates an empty value such as "No PB #"
   x <- stringr::str_replace_all(x, pattern = "[A-Za-z]", replacement = "")

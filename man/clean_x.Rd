@@ -30,6 +30,6 @@ clean_x("X00020", using = "CASE", value = "PB021665")
 clean_x("X00020", using = "CII", value = "A07515123")
 }
 \seealso{
-clean_pb, clean_id, obtain_id
+clean_case, clean_id, obtain_id
 }
 

@@ -6,7 +6,7 @@
 #' @param value list or character vector that contains the actual values of the known identifier.
 #' @details By default, clean_x() simply pads the string containing X numbers and ensures it meets the standard format. This is useful when correcting a small amount of X numbers, or when there is an untrustworthy reference identifier. If a clean case or CII number is available, the X numbers can be cross-referenced to a built-in table using the reference identifier. Only one reference identifier is allowed at the time of the current release.
 #' @return Character vector of standardized X numbers. By default, NA values are introduced where there appears to be non-X characters present, unless a match was found in the reference table.
-#' @seealso clean_pb, clean_id, obtain_id
+#' @seealso clean_case, clean_id, obtain_id
 #' @examples
 #' clean_x("X6789") # X00006789
 #' clean_x("No #") # NA

@@ -1,3 +1,5 @@
+# Identifyr 0.1.2
+
 # Purpose 
 This package provides efficient tools for cleaning unique identifiers used by the Los Angeles County Probation Department. It contains functions that standardize identifiers in preparation for analysis. There is also a wrapper function that applies multiple identifyr functions at once (similar to `dplyr::mutate`, but does not require explicit column names). 
     
@@ -8,7 +10,7 @@ Users can apply the individual functions to an identifier of interest, or use th
 You can apply one function at a time.
 ```{r}
 clean_x(x)
-clean_pb(x) 
+clean_case(x) 
 ```
   
 You can pass additional arguments to clean_x that verifies the identifier against a reference table.
@@ -32,7 +34,7 @@ Apply the cleaning functions at once (similar to `dplyr::mutate`)
 df %>%
   clean_id(
     cols = c(1, 3),  # reference the desired column index or name to manipulate
-    FUN = c("clean_x", "clean_pb")  # apply these functions in this order
+    FUN = c("clean_x", "clean_case")  # apply these functions in this order
   )
 
 ```  

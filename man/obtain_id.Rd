@@ -23,6 +23,6 @@ Obtains an unknown identifier given some known identifier.
 obtain_id(obtain = "X", using = "CASE", "PB021665")
 }
 \seealso{
-clean_pb, clean_x, clean_id
+clean_case, clean_x, clean_id
 }
 
