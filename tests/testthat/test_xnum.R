@@ -6,8 +6,8 @@ context("Match Output")
 
 test_that("string is padding correctly when X is present", {
   expect_output(clean_x("X6789"), "X00006789")
-  expect_output(clean_x("X"), "X00000000")
-  expect_output(clean_x("0"), "X00000000")
+  expect_output(clean_x("X"), NA)
+  expect_output(clean_x("0"), NA)
   expect_output(clean_x("789"), "X00000789")
   expect_output(clean_x("NOT IN APS"), NA)
   expect_output(clean_x("NO X#"), NA)
@@ -16,4 +16,8 @@ test_that("string is padding correctly when X is present", {
   expect_output(clean_x("X01234 "), "X00001234")
   expect_output(clean_x(" X 01234 "), "X00001234")
   expect_output(clean_x(" X 012 34"), "X00001234")
+})
+
+test_that("cross-reference works properly", {
+  expect_output(clean_x("A000A20", using = "CII", value = "A07515123"), "X00000020")
 })

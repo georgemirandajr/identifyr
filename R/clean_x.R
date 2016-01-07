@@ -16,37 +16,38 @@
 
 # X-Number Cleaning
 #' @export
-clean_x <- function(x, using = NULL, value = "") {
+clean_x <- function(x, using = NULL, value = NULL) {
 
-  # Replace any instances where there is a space anywhere in the X number, such as "X 0000789"
+  # Strip away all characters, even if it's something that indicates an empty value such as "No PB #"
+  x <- stringr::str_replace_all(x, pattern = "[A-Za-z]", replacement = "")
+
+  # Replace all whitespace
   x <- stringr::str_replace_all(x, pattern = " ", replacement = "")
 
-  padded <- vapply(x, stringr::str_pad, FUN.VALUE = "character", width = 9, side = "left", pad = "X")  # Pad the character vector and assign to a temporary list
+  # Pad each element with zeros to become 6 digits long
+  padded <- vapply(x, stringr::str_pad, FUN.VALUE = "character", width = 8, side = "left", pad = "0")
 
-  # Replace X's with 0's when there's more than one X in an entry. Should only be X0, X00, X000, etc. Assign to new vector
-  clean.x <- stringr::str_replace_all(padded,
-                                      pattern = c(
-                                        "XXXXXXXXX{1}" = "X00000000",
-                                        "XXXXXXXX{1}" = "X0000000",
-                                        "XXXXXXX{1}" = "X000000",
-                                        "XXXXXX{1}" = "X00000",
-                                        "XXXXX{1}" = "X0000",
-                                        "XXXX{1}" = "X000",
-                                        "XXX{1}" = "X00",
-                                        "^XX" = "X0")
-  )
+  # Add the PB prefix to all strings
+  padded <- stringr::str_c("X", padded)
 
-  # Find entries that have non-X numbers such as "NO X #", "Not in APS", etc. Replace these with NA values
-  clean.x[grep("[A-Wa-w]\\D|[Y-Zy-z]\\D", clean.x)] <- NA
+  # Convert the ones that originally used text to indicate null values to NA
+  padded[grep("X0000000", padded)] <- NA
 
-  ## If verify is TRUE, use the reference table to verify the X numbers.
+  ## If the using argument is not null, use the reference table to verify the X numbers.
   if (is.null(using)) {
     # Return the cleaned up version of the character vector
-    return(clean.x)
+    return(padded)
+
+  } else if (!is.null(using) & is.null(value)) {
+
+    stop("The 'value' argument is null when 'using' argument is not null")
 
   } else {
+
     verified <- obtain_id(obtain = "X", using = using, value = value)
+
     return(verified)
   }
+
 }
 

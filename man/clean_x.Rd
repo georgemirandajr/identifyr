@@ -4,7 +4,7 @@
 \alias{clean_x}
 \title{Clean X Numbers}
 \usage{
-clean_x(x, using = NULL, value = "")
+clean_x(x, using = NULL, value = NULL)
 }
 \arguments{
 \item{x}{character vector containing X numbers}

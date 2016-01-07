@@ -1,0 +1,17 @@
+{
+    "contents" : "library(testthat)\nlibrary(identifyr)\ncontext(\"Match Output\")\n\n# test_check(\"identifyr\")\n\ntest_that(\"string is padding correctly when X is present\", {\n  expect_output(clean_x(\"X6789\"), \"X00006789\")\n  expect_output(clean_x(\"X\"), NA)\n  expect_output(clean_x(\"0\"), NA)\n  expect_output(clean_x(\"789\"), \"X00000789\")\n  expect_output(clean_x(\"NOT IN APS\"), NA)\n  expect_output(clean_x(\"NO X#\"), NA)\n  expect_output(clean_x(\"X 0123456\"), \"X00123456\")\n  expect_output(clean_x(\" X01234\"), \"X00001234\")\n  expect_output(clean_x(\"X01234 \"), \"X00001234\")\n  expect_output(clean_x(\" X 01234 \"), \"X00001234\")\n  expect_output(clean_x(\" X 012 34\"), \"X00001234\")\n})\n\ntest_that(\"cross-reference works properly\", {\n  expect_output(clean_x(\"A000A20\", using = \"CII\", value = \"A07515123\"), \"X00000020\")\n})\n",
+    "created" : 1452185438468.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "242147513",
+    "id" : "18507CB8",
+    "lastKnownWriteTime" : 1452185642,
+    "path" : "~/identifyr/tests/testthat/test_xnum.R",
+    "project_path" : "tests/testthat/test_xnum.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
